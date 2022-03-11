@@ -1,17 +1,18 @@
 const express = require('express');
-const cors = require('cors')
 const server = express();
+const cors = require('cors')
+const {logger} = require('./projects/projects-middleware')
 const actionRouter = require('./actions/actions-router')
 const projectRouter = require('./projects/projects-router')
 // Configure your server here
 server.use(cors())
 server.use(express.json())
 
-server.use('/api/actions', actionRouter)
+server.use('/api/actions', logger, actionRouter)
 
-server.use('/api/projects', projectRouter)
+server.use('/api/projects', logger,  projectRouter)
 
-server.get('/', (req, res) => {
+server.get('/', logger,  (req, res) => {
     res.send(`<h2> WELCOME!!!!!! </h2>`)
 })
 

@@ -6,10 +6,9 @@ const projectRouter = require('./projects/projects-router')
 // Configure your server here
 server.use(cors())
 server.use(express.json())
-// Build your actions router in /api/actions/actions-router.js
+
 server.use('/api/actions', actionRouter)
 
-// Build your projects router in /api/projects/projects-router.js
 server.use('/api/projects', projectRouter)
 
 server.get('/', (req, res) => {
